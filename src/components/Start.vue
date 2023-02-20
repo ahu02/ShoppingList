@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="hello">
-      <router-link to="/add-list">Neue Liste erstelllen</router-link>
+      <router-link to="/add-list">Neue Liste erstellen</router-link>
       <router-link to="/search-location">Store in der Nähe finden</router-link>
     </div>
     <div v-if="shoppingList.length > 0" class="lists">

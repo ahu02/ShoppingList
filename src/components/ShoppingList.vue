@@ -1,7 +1,9 @@
 <template>
   <div class="list">
     <div class="cancel">
-      <button v-if="cat.includes('Fisch')" @click="showInitalCategories">Zurück</button>
+      <button v-if="cat.includes('Fisch')" @click="showInitalCategories">
+        Zurück
+      </button>
       <router-link to="/">Abbrechen</router-link>
     </div>
     <div class="categories">
@@ -25,7 +27,7 @@
           placeholder="Eigenen Eintrag hinzufügen"
           class="own-entry"
         />
-        <button class="add" @click="addOwnItem">+</button>
+        <button class="add" @click="addOwnItem" title="Eintrag hinzufügen">+</button>
         <span v-for="(item, index) in filteredList" :key="index">
           <input
             type="checkbox"
@@ -37,10 +39,10 @@
           <label :for="item">{{ item }}</label>
         </span>
       </div>
-      <div   class="list-item" v-else></div>
+      <div class="list-item" v-else></div>
       <div class="shopping-list" v-if="shoppingList.length > 0">
         <div class="save-btn">
-          <button class="save-list" @click="saveList">Save List</button>
+          <button class="save-list" @click="saveList">Liste speichern</button>
         </div>
         <div v-for="(item, index) in shoppingList" :key="index" class="item">
           <span>{{ item }}</span>
@@ -88,8 +90,8 @@ export default {
     ...mapMutations(["setList"]),
     showInitalCategories() {
       this.cat = ["Lebensmittel", "Haushalt", "Baby", "Drogerie Artikel"];
-          },
-    addOwnItem(){
+    },
+    addOwnItem() {
       this.shoppingList.push(this.ownItem);
     },
     removeItem(index) {
@@ -144,27 +146,29 @@ export default {
   margin-top: 15px;
   border: 1px solid white;
   border-radius: 0%;
-  &::placeholder{
+  &::placeholder {
     font-family: "Varela Round", sans-serif;
   }
 }
 .add {
+  cursor: pointer;
   margin-left: -50px;
   position: relative;
-    top: -33px;
-    right: -256px;
-    height: 33px;
-    width: 50px;
-    background: #42b983;
-    color: white;
-    border: 0;
-    -webkit-appearance: none;
+  top: -33px;
+  right: -256px;
+  height: 33px;
+  width: 50px;
+  background: #42b983;
+  color: white;
+  border: 0;
+  -webkit-appearance: none;
 }
 .cancel {
   display: flex;
   justify-content: flex-end;
   margin-right: 20px;
-  a, button {
+  a,
+  button {
     font-family: "Varela Round", sans-serif;
     font-size: 16px;
     color: white;
@@ -182,6 +186,7 @@ export default {
 .list {
   background: #2c3e50;
   .categories {
+    flex-wrap: wrap;
     display: flex;
     justify-content: center;
     button {
@@ -210,9 +215,9 @@ export default {
     height: 30px;
     padding-left: 5px;
     width: 50%;
-    &::placeholder{
-    font-family: "Varela Round", sans-serif;
-  }
+    &::placeholder {
+      font-family: "Varela Round", sans-serif;
+    }
   }
   .shopping-list {
     width: 50%;
@@ -222,6 +227,9 @@ export default {
     border: 2px solid white;
     padding: 10px;
     margin-right: 202px;
+    .save-list {
+      cursor: pointer;
+    }
   }
   .item {
     width: 100%;
